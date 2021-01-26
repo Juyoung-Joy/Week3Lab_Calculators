@@ -14,14 +14,16 @@
     <body>
         <h1>Arithmetic Calculator</h1>
         <form action="arithmetic" method="POST">
-            First: <input type="text" name="firstNumber" value="${firstNum}">
+            First: <input type="text" name="firstNumber" value="${firstNum}"><br>
             Second: <input type="text" name="secondNumber" value="${secondNum}">
-            <input type="button" value="+">
-            <input type="button" value="-">
-            <input type="button" value="*">
-            <input type="button" value="%">
+            <input type="submit" value="+" name="cal">
+            <input type="submit" value="-" name="cal">
+            <input type="submit" value="*" name="cal">
+            <input type="submit" value="%" name="cal">
         </form>
+            
             <br>
-            Result: ${result}
+            <div>Result: ${result}</div>            
+            <a href="arithmetic">Arithmetic Calculator</a>
     </body>
 </html>
