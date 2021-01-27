@@ -15,27 +15,27 @@ public class ArithmeticCalculatorServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        getServletContext().getRequestDispatcher("/WEB-INF/arithmeticcalculation.jsp")
+        
+        request.setAttribute("result", "---");
+        
+        getServletContext().getRequestDispatcher("/WEB-INF/arithmeticcalculator.jsp")
             .forward(request, response);
-
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
             
-        String firstNum = request.getParameter("firstNum");
-        String secondNum = request.getParameter("secondNum");
+        String firstNum = request.getParameter("firstNumber");
+        String secondNum = request.getParameter("secondNumber");
         String calculation = request.getParameter("cal");
         
         request.setAttribute("firstNum", firstNum);
         request.setAttribute("secondNum", secondNum);
         
         try {
-            int a,b = 0;
-            
-            a = Integer.parseInt(firstNum);
-            b = Integer.parseInt(secondNum);
+            int a = Integer.parseInt(firstNum);
+            int b = Integer.parseInt(secondNum);
             int result = 0;
 
             if(calculation.equals("+")) {
@@ -49,14 +49,16 @@ public class ArithmeticCalculatorServlet extends HttpServlet {
             }
             else {
                 result = a % b;
-            }
-            
-             request.setAttribute("result", result);
+            }           
+            request.setAttribute("result", result);
             
         }
         catch (NumberFormatException e) {
-            request.setAttribute("result", "Incalid");
+            request.setAttribute("result", "Invalid");
         }
+        
+        getServletContext().getRequestDispatcher("/WEB-INF/arithmeticcalculator.jsp")
+            .forward(request, response);
         
     }
 

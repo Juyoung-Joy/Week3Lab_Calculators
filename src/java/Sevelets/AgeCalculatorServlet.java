@@ -23,12 +23,13 @@ public class AgeCalculatorServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        String currentAge = request.getParameter("currentAge");
+        String currentAge = request.getParameter("age");
+        request.setAttribute("age", currentAge);
         
         try {
              int inputAge = Integer.parseInt(currentAge);
                 inputAge++;
-                request.setAttribute("output", "Your age next birthday will be " + inputAge);
+                request.setAttribute("message", "Your age next birthday will be " + inputAge);
         }
         catch (NumberFormatException e) {
                 request.setAttribute("message", "You must give your current age");
