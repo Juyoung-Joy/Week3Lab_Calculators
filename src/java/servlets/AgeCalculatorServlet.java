@@ -1,4 +1,4 @@
-package Sevelets;
+package servlets;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -28,8 +28,8 @@ public class AgeCalculatorServlet extends HttpServlet {
         
         try {
              int inputAge = Integer.parseInt(currentAge);
-                inputAge++;
-                request.setAttribute("message", "Your age next birthday will be " + inputAge);
+                 inputAge++;
+                 request.setAttribute("message", "Your age next birthday will be " + inputAge);
         }
         catch (NumberFormatException e) {
                 request.setAttribute("message", "You must give your current age");
